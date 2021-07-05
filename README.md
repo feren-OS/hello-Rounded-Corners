@@ -33,8 +33,8 @@ If your system is not listed above or there are packages missing in this list, p
 ### Manual Installation
 Clone the repository and create the build directory:
 ```
-git clone https://github.com/n4n0GH/hello
-cd hello && cd kwin-effects && mkdir build && cd build
+git clone https://github.com/feren-OS/hello-Rounded-Corners
+cd hello-Rounded-Corners && cd kwin-effects && mkdir build && cd build
 ```
 
 Start building with cmake:
