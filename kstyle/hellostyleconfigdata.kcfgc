@@ -1,6 +1,0 @@
-File=hello.kcfg
-ClassName=StyleConfigData
-NameSpace=hello
-Singleton=true
-Mutators=true
-GlobalEnums=true

@@ -1,24 +1,6 @@
-<img src="hello_icon.png" align="right" width="128" /> hello.
-======
+<h1>Feren OS Rounded Corners (fork of hello's KWin-Effect)
 
-hello. is a compilation of various color-schemes, themes, icons and more for the KDE Plasma desktop. It is unopinionated, putting _you_ in charge.
-
-# NOT ACTIVELY MAINTAINED!
-Since I moved on to a different hardware setup and KDE is just throwing too many bullshit things at me like SDDM insisting on mirroring the login screen unrotated to every monitor I have active as well as marking new input for overwriting for some reason, forcing me to double every character of my password and other silly quirks of Plasma I moved over to Gnome which for some reason works a ton better once basic configuration was done.
-
-I will still work on getting some bugs fixed whenever I feel like it (probably never, let's face it).
-
-Sorry!
-
-## Content
-
-| Package | WIP Status |
-| --- | --- |
-| [**Color Scheme**](https://github.com/n4n0GH/hello/tree/master/color-scheme)<br/>A beautifully crafted set of color schemes, supporting light and dark modes alike. | 90% done |
-| [**Application Style**](https://github.com/n4n0GH/hello/tree/master/kstyle)<br/>Taking the best parts of KDE's own Breeze set and improving upon it subtly. | 0% done |
-| [**Window Decoration**](https://github.com/n4n0GH/hello/tree/master/window-decoration)<br/>Allowing for granular customization, yet looking absolutely astonishing in every setting. | 90% done |
-| [**Plasma Theme**](https://github.com/n4n0GH/hello/tree/master/plasma-theme)<br/>Completing your desktop experience with a well balanced and elegant Plasma theme, complementing your light or dark color scheme. | 90% done |
-| [**Effects**](https://github.com/n4n0GH/hello/tree/master/kwin-effects)<br/>Rounding off the overall beautiful experience with the hello shader set. | 30% done |
+All credits go to the creator of this effect, as well as https://github.com/khanhas/ShapeCorners for code that was added to this fork.
 
 ## Installation
 
@@ -48,19 +30,11 @@ sudo zypper install cmake gcc-c++ extra-cmake-modules libQt5Gui-devel libQt5DBus
 
 If your system is not listed above or there are packages missing in this list, please open an issue or pull request so it can be fixed.
 
-### Automated Installation
-
-#### Shell Script
-Give the [hello automagic installer](https://github.com/hello-kde/install-tool) a try. It will fetch the latest stable release from this repository and run all the commands listed down below so you can sit back and watch the terminal do all the work.
-
-#### Gentoo ebuild
-Thanks to [therealfarfetchd](https://github.com/therealfarfetchd) for providing https://github.com/therealfarfetchd/ebuilds/tree/master/kde-misc/hello which includes the entire project.
-
 ### Manual Installation
 Clone the repository and create the build directory:
 ```
 git clone https://github.com/n4n0GH/hello
-cd hello && mkdir build && cd build
+cd hello && cd kwin-effects && mkdir build && cd build
 ```
 
 Start building with cmake:
@@ -70,16 +44,16 @@ make
 sudo make install
 ```
 
-Finally restart KWin and Plasma to clear their cache:
+Finally restart KWin to clear their cache:
 ```
 kwin_x11 --replace &
-plasmashell --replace &
 ```
 
-You should now be able to use KDE's system settings to enable and modify the theme.
+You should now be able to use KDE's system settings to enable the rounding.
 
 ## Donate
 
+<b>This below portion has been kept in from the origin of this code, out of due respect.</b>
 People have asked me to donate because they enjoyed these tools. Here's how you can donate:
 
 1) Open your favorite search engine

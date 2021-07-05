@@ -1,6 +1,0 @@
-File=hellosettingsdata.kcfg
-ClassName=InternalSettings
-NameSpace=Hello
-Singleton=false
-Mutators=true
-GlobalEnums=true
