@@ -1,4 +1,4 @@
-<h1>Feren OS Rounded Corners (fork of hello's KWin-Effect)
+<h1>Feren OS Rounded Corners (fork of hello's KWin-Effect)</h1>
 
 All credits go to the creator of this effect, as well as https://github.com/khanhas/ShapeCorners for code that was added to this fork.
 
