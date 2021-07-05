@@ -54,6 +54,7 @@ You should now be able to use KDE's system settings to enable the rounding.
 ## Donate
 
 <b>This below portion has been kept in from the origin of this code, out of due respect.</b>
+
 People have asked me to donate because they enjoyed these tools. Here's how you can donate:
 
 1) Open your favorite search engine
