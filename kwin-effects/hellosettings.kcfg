@@ -6,7 +6,7 @@
     <kcfgfile arg="true"/>
     <group name="Common">
         <entry name="BorderRadius" type="Int">
-            <default>5</default>
+            <default>4</default>
             <min>0</min>
             <max>9</max>
         </entry>

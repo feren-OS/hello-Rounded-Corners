@@ -9,12 +9,12 @@
         "Category": "Appearance",
         "Dependencies": [
         ],
-        "Description": "Rounds the corners of all applications smoothly and draws a nice, thin accent line on the edge of each window to give it that little special something.",
+        "Description": "Rounds the corners of all applications smoothly and draws a nice, thin accent line on the edge of each window to give it that little special something. (Feren OS modification)",
         "EnabledByDefault": true,
         "Icon": "",
         "Id": "kwin4_effect_helloshaders",
         "License": "GPL",
-        "Name": "hello shaders",
+        "Name": "hello shaders (Feren OS)",
         "ServiceTypes": [
             "KWin/Effect"
         ],

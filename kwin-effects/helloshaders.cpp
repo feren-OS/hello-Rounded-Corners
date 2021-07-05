@@ -83,23 +83,10 @@ HelloShadersEffect::HelloShadersEffect() : KWin::Effect(), m_shader(0)
             m_shader->setUniform(sampler, 0);
             KWin::ShaderManager::instance()->popShader();
             connect(KWin::effects, &KWin::EffectsHandler::windowMaximizedStateChanged, this, &HelloShadersEffect::windowMaximizedStateChanged);
-            connect(KWin::effects, &KWin::EffectsHandler::windowAdded, this, &HelloShadersEffect::windowMaximizedStart);
         }
     }
     else
         deleteLater();
-}
-
-void HelloShadersEffect::windowMaximizedStart(KWin::EffectWindow *w)
-{
-    // logic:
-    // if isMaximized(){
-    //  applyEffect = NULL;
-    // } else { applyEffect = w; }
-    // problem:
-    // how to construct isMaximized()?
-    // how is it done in the decorations?
-    // can that be copied to the effects?
 }
 
 void HelloShadersEffect::windowMaximizedStateChanged(KWin::EffectWindow *w, bool horizontal, bool vertical)
@@ -331,9 +318,22 @@ HelloShadersEffect::paintWindow(KWin::EffectWindow *w, int mask, QRegion region,
     const int mvpMatrixLocation = m_shader->uniformLocation("modelViewProjectionMatrix");
     KWin::ShaderManager *sm = KWin::ShaderManager::instance();
     sm->pushShader(m_shader/*KWin::ShaderTrait::MapTexture*/);
+    
+    //Code from ShapeCorners
+    bool cornerConditions[] = {
+		geo.left() == 0 || geo.top() == 0,
+		(geo.right() + 1) == s.width() || geo.top() == 0,
+		(geo.right() + 1) == s.width() || (geo.bottom() + 1) == s.height(),
+		geo.left() == 0 || (geo.bottom() + 1) == s.height()};
+    //End of code from ShapeCorners
 
     for (int i = 0; i < NTex; ++i)
     {
+        //Code from ShapeCorners
+        if (cornerConditions[i])
+			continue;
+        //End of code from ShapeCorners
+        
         QMatrix4x4 modelViewProjection;
         modelViewProjection.ortho(0, s.width(), s.height(), 0, 0, 65535);
         modelViewProjection.translate(rect[i].x(), rect[i].y());
