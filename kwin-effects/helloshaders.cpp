@@ -26,6 +26,9 @@
 #include <kwinglplatform.h>
 #include <kwinglutils.h>
 #include <QMatrix4x4>
+#include <KConfig>
+#include <KConfigGroup>
+#include <QFontMetrics>
 
 KWIN_EFFECT_FACTORY_SUPPORTED_ENABLED(  HelloShadersFactory,
                                         HelloShadersEffect,
@@ -199,12 +202,29 @@ HelloShadersEffect::reconfigure(ReconfigureFlags flags)
 {
     Q_UNUSED(flags)
     m_alpha = 63;
-    setRoundness(5);    // TODO: make this dynamic by fetching the corner radius from hello window decorations if available
+    
+    //TODO: Figure out how the heck to have this use KDecoration2 stuff
+    int gridUnit = QFontMetrics(QFont()).boundingRect(QLatin1Char('M')).height();
+    int smallSpacing = qMax(2, (int)(gridUnit / 4)); // 1/4 of gridUnit, at least 2
+    
+    KConfig config(QStringLiteral("kwinrc"));
+    KConfigGroup cg(&config, "org.kde.kdecoration2");
+    if (cg.readEntry("library", QString()) == "org.kde.breeze") {
+        setRoundness(1.5*smallSpacing);
+    } else if (cg.readEntry("library", QString()) == "org.kde.ferenkwin") {
+        setRoundness(gridUnit/3); //4?
+    } else {
+        setRoundness(0); //'Disable' it outside these decorations
+    }
 }
 
 void
 HelloShadersEffect::prePaintWindow(KWin::EffectWindow *w, KWin::WindowPrePaintData &data, int time)
 {
+    if (m_size == 0) { //Do nothing if roundness is 0
+        return;
+    }
+    
     // TODO: make exclusion list customizable through settings
     if (!m_shader->isValid()
             || (w->windowClass().contains("plasma", Qt::CaseInsensitive) 

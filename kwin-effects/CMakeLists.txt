@@ -40,6 +40,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Crash
     GlobalAccel
+    GuiAddons
     I18n
     KIO
     Service
@@ -84,6 +85,8 @@ if (NOT EFFECTS_H OR NOT KWIN_GLUTILS OR NOT KWIN_EFFECTS OR NOT OPENGL)
     message(FATAL_ERROR "cant continue")
 endif (NOT EFFECTS_H OR NOT KWIN_GLUTILS OR NOT KWIN_EFFECTS OR NOT OPENGL)
 
+find_package(KDecoration2 REQUIRED)
+
 add_library(${HELLOSHADERS} MODULE helloshaders.cpp)
 
 target_link_libraries(${HELLOSHADERS}
@@ -94,6 +97,7 @@ target_link_libraries(${HELLOSHADERS}
         ${KWIN_GLUTILS}
 	${EPOXY_LINK_LIBRARIES}
     PRIVATE
+        KDecoration2::KDecoration
         KF5::ConfigCore
         KF5::CoreAddons
         KF5::ConfigWidgets
